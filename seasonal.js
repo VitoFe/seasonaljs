@@ -1,4 +1,4 @@
-var iconsMap = new Map([
+var themePresets = new Map([
     ['winter', {
         icons: [
             'fa-regular fa-snowflake wparticle-s',
@@ -12,6 +12,9 @@ var iconsMap = new Map([
         ],
         rotations: [30, 60, 120, 240, 300],
         opacity: [0.75, 0.65, 0.6],
+        amount: 30,
+        speed_x: 5,
+        speed_y: 3,
         fade: true
     }],
     ['fall', {
@@ -27,6 +30,9 @@ var iconsMap = new Map([
         ],
         rotations: [30, 60, 120, 240, 300],
         opacity: [0.9, 0.8, 0.7, 0.6],
+        amount: 30,
+        speed_x: 5,
+        speed_y: 3,
         fade: true
     }],
     ['xmas', {
@@ -52,6 +58,9 @@ var iconsMap = new Map([
         ],
         rotations: [0, 30, 330],
         opacity: [0.9, 0.8, 0.7, 0.6],
+        amount: 20,
+        speed_x: 4,
+        speed_y: 2,
         fade: false
     }],
     ['rain', {
@@ -67,6 +76,9 @@ var iconsMap = new Map([
         ],
         rotations: [],
         opacity: [0.55, 0.5, 0.4],
+        amount: 40,
+        speed_x: 1,
+        speed_y: 5,
         fade: false
     }],
     ['clouds', {
@@ -80,6 +92,9 @@ var iconsMap = new Map([
         ],
         rotations: [],
         opacity: [0.35, 0.3, 0.2],
+        amount: 8,
+        speed_x: 1,
+        speed_y: 2,
         fade: false
     }],
     ['storm', {
@@ -97,6 +112,9 @@ var iconsMap = new Map([
         ],
         rotations: [],
         opacity: [0.35, 0.3, 0.2],
+        amount: 8,
+        speed_x: 1,
+        speed_y: 2,
         fade: false
     }],
     ['sun', {
@@ -110,6 +128,9 @@ var iconsMap = new Map([
         ],
         rotations: [0, 30, 330],
         opacity: [0.4, 0.35],
+        amount: 6,
+        speed_x: 1,
+        speed_y: 1,
         fade: false
     }]
 ]);
@@ -217,17 +238,29 @@ function getCurrentSeason() {
     }
 };
 
-function startCurrentWEffect(amount, xSpeed = 8, ySpeed = 4) {
-    if (iconsMap.has(getCurrentSeason())) {
-        startWEffect(amount, xSpeed, ySpeed, getCurrentSeason());
+function startCurrentWEffect() {
+    const season = getCurrentSeason();
+    if (themePresets.has(season)) {
+        startWEffect(season);
     } else {
         console.log('Invalid theme provided');
     }
 }
 
-function startWEffect(amount, xSpeed = 8, ySpeed = 4, theme) {
+// Pass a preset theme name or a custom theme object
+function startWEffect(theme) {
     stopWEffect(); // stop previous effect if any
-    const iconData = iconsMap.get(theme);
+    var iconData;
+    if (typeof theme === 'string') {
+        if (themePresets.has(theme)) {
+            iconData = themePresets.get(theme);
+        } else {
+            console.log('Invalid theme provided');
+            return;
+        }
+    } else {
+        iconData = theme;
+    }
     var icon_index = 0;
     for (var i = 0; i < amount; ++i) {
         var particle = document.createElement("div");
