@@ -26,6 +26,11 @@
       border-radius: 10px;
       font-size: 0.55em;
     }
+
+    button {
+      margin-left: 2px;
+      margin-right: 2px;
+    }
   </style>
 </head>
 
@@ -33,24 +38,25 @@
   <div id="test">
     <section id="main-controls">
       <button onclick="stopWEffect();" style="background-color:lightcoral">
-        STOP</button>&nbsp;
+        STOP</button>
       <button onclick="startCurrentWEffect();" style="background-color:cornsilk">
-        CURRENT (<span id="current-theme"></span>)</button>&nbsp;
+        CURRENT (<span id="current-theme"></span>)</button>
     </section>
     <section id="seasonal-effects">
       <div class="section-title">Seasonal Effects</div>
-      <button onclick="startWEffect('winter');">Winter</button>&nbsp;
-      <button onclick="startWEffect('fall');">Fall</button>&nbsp;
+      <button onclick="startWEffect('winter');">Winter</button>
+      <button onclick="startWEffect('fall');">Fall</button>
     </section>
     <section id="event-effects">
       <div class="section-title">Event Effects</div>
-      <button onclick="startWEffect('xmas');">XMas</button>&nbsp;
+      <button onclick="startWEffect('xmas');">XMas</button>
+      <button onclick="startWEffect('easter');">Easter</button>
     </section>
     <section id="weather-effects">
       <div class="section-title">Weather Effects</div>
-      <button onclick="startWEffect('rain');">Rain</button>&nbsp;
-      <button onclick="startWEffect('clouds');">Clouds</button>&nbsp;
-      <button onclick="startWEffect('storm');">Storm</button>&nbsp;
+      <button onclick="startWEffect('rain');">Rain</button>
+      <button onclick="startWEffect('clouds');">Clouds</button>
+      <button onclick="startWEffect('storm');">Storm</button>
       <button onclick="startWEffect('sun');">Sun</button>
     </section>
   </div>

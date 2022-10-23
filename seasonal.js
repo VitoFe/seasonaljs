@@ -63,6 +63,26 @@ var themePresets = new Map([
         speed_y: 2,
         fade: false
     }],
+    ['easter', {
+        icons: [
+            'fa-solid fa-egg wparticle-l',
+            'fa-solid fa-carrot wparticle-l',
+            'fa-solid fa-dove wparticle-m',
+            'fa-brands fa-pagelines wparticle-m'
+        ],
+        styles: [
+            'color: #FFFFF0',
+            'color: #FF7F50',
+            'color: #F0F8FF',
+            'color: #6B8E23'
+        ],
+        rotations: [0, 30],
+        opacity: [0.9, 0.8, 0.7, 0.6],
+        amount: 20,
+        speed_x: 4,
+        speed_y: 2,
+        fade: false
+    }],
     ['rain', {
         icons: [
             'fa-solid fa-droplet wparticle-xxs',
