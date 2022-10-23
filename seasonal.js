@@ -1,4 +1,3 @@
-// FontAwesome Icons
 var iconsMap = new Map([
     ['winter', {
         icons: [
@@ -15,7 +14,7 @@ var iconsMap = new Map([
         opacity: [0.75, 0.65, 0.6],
         fade: true
     }],
-    ['autumn', {
+    ['fall', {
         icons: [
             'fa-solid fa-leaf wparticle-xs',
             'fa-brands fa-canadian-maple-leaf wparticle-m'
@@ -198,9 +197,37 @@ function stopWEffect() {
     weffect_ids = [];
 };
 
-function startWEffect(amount, xSpeed = 8, ySpeed = 4, iconKey) {
+function getCurrentSeason() {
+    const now = new Date();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+    switch (month) {
+        case 3:
+            return day < 22 ? 'winter' : 'spring';
+        case 6:
+            return day < 22 ? 'spring' : 'summer';
+        case 9:
+            return day < 22 ? 'summer' : 'fall';
+        case 12:
+            return day < 22 ? 'fall' : 'winter';
+        default:
+            return month > 3 && month < 6 ? 'spring'
+                : month > 6 && month < 9 ? 'summer'
+                    : month > 9 && month < 12 ? 'fall' : 'winter';
+    }
+};
+
+function startCurrentWEffect(amount, xSpeed = 8, ySpeed = 4) {
+    if (iconsMap.has(getCurrentSeason())) {
+        startWEffect(amount, xSpeed, ySpeed, getCurrentSeason());
+    } else {
+        console.log('Invalid theme provided');
+    }
+}
+
+function startWEffect(amount, xSpeed = 8, ySpeed = 4, theme) {
     stopWEffect(); // stop previous effect if any
-    const iconData = iconsMap.get(iconKey);
+    const iconData = iconsMap.get(theme);
     var icon_index = 0;
     for (var i = 0; i < amount; ++i) {
         var particle = document.createElement("div");
