@@ -83,6 +83,34 @@ var themePresets = new Map([
         speed_y: 2,
         fade: false
     }],
+    ['halloween', {
+        icons: [
+            'fa-solid fa-bat wparticle-l',
+            'fa-solid fa-ghost wparticle-l',
+            'fa-solid fa-jack-o-lantern wparticle-m',
+            'fa-solid fa-broom wparticle-m',
+            'fa-solid fa-skull wparticle-m',
+            'fa-solid fa-scythe wparticle-m',
+            'fa-solid fa-spider-web wparticle-m',
+            'fa-solid fa-spider wparticle-m'
+        ],
+        styles: [
+            'color: #161616',
+            'color: #FFFFF0',
+            'color: #FF7F50',
+            'color: #7A560E',
+            'color: #FFFFF0',
+            'color: #644A77',
+            'color: #F0F8FF',
+            'color: #252525'
+        ],
+        rotations: [0, 30],
+        opacity: [0.9, 0.8, 0.7, 0.6],
+        amount: 20,
+        speed_x: 4,
+        speed_y: 2,
+        fade: false
+    }],
     ['rain', {
         icons: [
             'fa-solid fa-droplet wparticle-xxs',
