@@ -1,28 +1,65 @@
 <html>
-  <head>
-    <link type="text/css" rel="stylesheet" href="seasonal.css" />
-    <script src="seasonal.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <style>
+
+<head>
+  <link type="text/css" rel="stylesheet" href="seasonal.css" />
+  <script src="seasonal.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+    integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
     body {
       color: white;
       background-color: #212121;
       font-size: 35px;
     }
-    </style>
-  </head>
-  <body>
-    <div id="test">
-        <button onclick="stopWEffect();">STOP</button>&nbsp;
-        <button onclick="startCurrentWEffect();">CURRENT</button>&nbsp;
-        <button onclick="startWEffect('winter');">Winter</button>&nbsp;
-        <button onclick="startWEffect('fall');">Fall</button>&nbsp;
-        <button onclick="startWEffect('xmas');">XMas</button>&nbsp;
-        <button onclick="startWEffect('rain');">Rain</button>&nbsp;
-        <button onclick="startWEffect('clouds');">Clouds</button>&nbsp;
-        <button onclick="startWEffect('storm');">Storm</button>&nbsp;
-        <button onclick="startWEffect('sun');">Sun</button>
-    </div>
-  </body>
+
+    .section-title {
+      font-size: 0.7em;
+      font-family: sans-serif;
+      margin-top: 10px;
+    }
+
+    #main-controls button {
+      border-radius: 10px;
+      font-size: 0.55em;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="test">
+    <section id="main-controls">
+      <button onclick="stopWEffect();" style="background-color:lightcoral">
+        STOP</button>&nbsp;
+      <button onclick="startCurrentWEffect();" style="background-color:cornsilk">
+        CURRENT (<span id="current-theme"></span>)</button>&nbsp;
+    </section>
+    <section id="seasonal-effects">
+      <div class="section-title">Seasonal Effects</div>
+      <button onclick="startWEffect('winter');">Winter</button>&nbsp;
+      <button onclick="startWEffect('fall');">Fall</button>&nbsp;
+    </section>
+    <section id="event-effects">
+      <div class="section-title">Event Effects</div>
+      <button onclick="startWEffect('xmas');">XMas</button>&nbsp;
+    </section>
+    <section id="weather-effects">
+      <div class="section-title">Weather Effects</div>
+      <button onclick="startWEffect('rain');">Rain</button>&nbsp;
+      <button onclick="startWEffect('clouds');">Clouds</button>&nbsp;
+      <button onclick="startWEffect('storm');">Storm</button>&nbsp;
+      <button onclick="startWEffect('sun');">Sun</button>
+    </section>
+  </div>
+</body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("current-theme").textContent = getCurrentSeason();
+  });
+</script>
+
 </html>
