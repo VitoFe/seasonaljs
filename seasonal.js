@@ -65,10 +65,10 @@ var themePresets = new Map([
     }],
     ['easter', {
         icons: [
-            'fa-solid fa-egg wparticle-l',
+            'fa-solid fa-egg wparticle-xl',
             'fa-solid fa-carrot wparticle-l',
-            'fa-solid fa-dove wparticle-m',
-            'fa-brands fa-pagelines wparticle-m'
+            'fa-solid fa-dove wparticle-xl',
+            'fa-brands fa-pagelines wparticle-l'
         ],
         styles: [
             'color: #FFFFF0',
@@ -86,12 +86,12 @@ var themePresets = new Map([
     ['halloween', {
         icons: [
             'fa-solid fa-bat wparticle-l',
-            'fa-solid fa-ghost wparticle-l',
-            'fa-solid fa-jack-o-lantern wparticle-m',
-            'fa-solid fa-broom wparticle-m',
-            'fa-solid fa-skull wparticle-m',
+            'fa-solid fa-ghost wparticle-xl',
+            'fa-solid fa-jack-o-lantern wparticle-xl',
+            'fa-solid fa-broom wparticle-l',
+            'fa-solid fa-skull wparticle-l',
             'fa-solid fa-scythe wparticle-m',
-            'fa-solid fa-spider-web wparticle-m',
+            'fa-solid fa-spider-web wparticle-l',
             'fa-solid fa-spider wparticle-m'
         ],
         styles: [
@@ -321,7 +321,7 @@ function startWEffect(theme) {
             p_icon.style.transform = 'rotate(' + getRand(t_data.rotations) + 'deg)';
         }
         p_icon.style.opacity = getRand(t_data.opacity);
-        p_icon.style.textShadow = '4px 4px 5px #000000';
+        p_icon.style.textShadow = '2px 2px 10px #000000';
         particle.appendChild(p_icon);
         particle.style.position = 'absolute';
         placeRandomly(particle);
