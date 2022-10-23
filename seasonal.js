@@ -250,29 +250,29 @@ function startCurrentWEffect() {
 // Pass a preset theme name or a custom theme object
 function startWEffect(theme) {
     stopWEffect(); // stop previous effect if any
-    var iconData;
+    var t_data;
     if (typeof theme === 'string') {
         if (themePresets.has(theme)) {
-            iconData = themePresets.get(theme);
+            t_data = themePresets.get(theme);
         } else {
             console.log('Invalid theme provided');
             return;
         }
     } else {
-        iconData = theme;
+        t_data = theme;
     }
     var icon_index = 0;
-    for (var i = 0; i < amount; ++i) {
+    for (var i = 0; i < t_data.amount; ++i) {
         var particle = document.createElement("div");
         particle.id = '_weffect_' + String(i);
         particle.className = 'weffect';
         p_icon = document.createElement("i");
-        p_icon.className = iconData.icons[icon_index];
-        p_icon.style = iconData.styles.length == iconData.icons.length ? iconData.styles[icon_index] : getRand(iconData.styles);
-        if (iconData.rotations.length > 0) {
-            p_icon.style.transform = 'rotate(' + getRand(iconData.rotations) + 'deg)';
+        p_icon.className = t_data.icons[icon_index];
+        p_icon.style = t_data.styles.length == t_data.icons.length ? t_data.styles[icon_index] : getRand(t_data.styles);
+        if (t_data.rotations.length > 0) {
+            p_icon.style.transform = 'rotate(' + getRand(t_data.rotations) + 'deg)';
         }
-        p_icon.style.opacity = getRand(iconData.opacity);
+        p_icon.style.opacity = getRand(t_data.opacity);
         p_icon.style.textShadow = '4px 4px 5px #000000';
         particle.appendChild(p_icon);
         particle.style.position = 'absolute';
@@ -280,7 +280,7 @@ function startWEffect(theme) {
         particle.style.pointerEvents = 'none';
         document.getElementsByTagName('body')[0].appendChild(particle);
         weffect_div.push(particle);
-        initWEffect(particle, i, xSpeed, ySpeed, iconData.fade);
-        icon_index = (icon_index + 1) % iconData.icons.length;
+        initWEffect(particle, i, t_data.speed_x, t_data.speed_y, t_data.fade);
+        icon_index = (icon_index + 1) % t_data.icons.length;
     };
 };
